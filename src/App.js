@@ -5,6 +5,7 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Footer from './Components/Footer';
 import Browse from './Components/Browse';
 import Song from './Components/Song';
+import PageNotFound from './Components/PageNotFound';
 
 function RouteWithSubRoutes(route) {
   return (
@@ -34,7 +35,9 @@ const routes = [
     path:'/track/:key',
     component: Song,
   },
-  
+  {
+    component: PageNotFound,
+  }
 ];
 
 function App() {
