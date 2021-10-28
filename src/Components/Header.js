@@ -1,32 +1,38 @@
 import React, { useState } from 'react'
+import SpotifyLogo from '../assets/SpotifyLogo.png'
+import {Link} from 'react-router-dom'
 
 function Header() {
-	
+	const [open,setOpen] = useState(false);
 
+	
 	return (
 		
 <div>
     <nav class="bg-black  shadow ">
         <div class="max-w-7xl mx-auto px-8">
-            <div class="flex items-center justify-between h-16">
+            <div class="flex items-center justify-between h-20">
                 <div class="w-full justify-between flex items-center">
-                    <a class="flex-shrink-0" href="/">
-                        <img class="h-8 w-8" src="../../assets/image.jpeg" alt="Logo"/>
-                    </a>
+                    <Link to='/' class="flex-shrink-0" href="/">
+                        <img class="h-12 w-40" src={SpotifyLogo} alt={"Logo"}/>
+                    </Link>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <a class="text-white is-active hover:text-black hover:bg-white px-3 py-2 rounded-md text-sm font-medium" href="/">
-                                Home
-                            </a>
-                            <a class="text-white hover:text-black hover:bg-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
-                                Gallery
-                            </a>
-                            <a class="text-white hover:text-black hover:bg-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
-                                Content
-                            </a>
-                            <a class="text-white hover:text-black hover:bg-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
-                                Contact
-                            </a>
+                            <Link to="/Browse" class="text-white hover:text-indigo-600  px-3 py-2 rounded-md text-md font-bold" href="/">
+                                Premium
+                            </Link>
+                            <Link to="/Support" class="text-white hover:text-indigo-600  px-3 py-2 rounded-md text-md font-bold" href="/Browse">
+                                Support
+                            </Link>
+			            <Link to='/Download' class="text-white  hover:text-indigo-600 border-r border-white space-x-2 px-5 py-2 text-md font-bold" href="/">
+                                Download
+                            </Link>
+                            <Link to='/Signup' class="text-white hover:text-indigo-600  px-3 py-2 rounded-md text-md font-bold" href="/">
+                                Sign Up
+                            </Link>
+                            <Link to='/Login' class="text-white hover:text-indigo-600  px-3 py-2 rounded-md text-md font-bold" href="/">
+                                Log In
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -35,7 +41,7 @@ function Header() {
                     </div>
                 </div>
                 <div class="-mr-2 flex md:hidden">
-                    <button class="text-gray-800 dark:text-white hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
+                    <button onClick={ () => setOpen(!open) } class="text-gray-800 dark:text-white hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md focus:outline-none">
                         <svg width="20" height="20" fill="currentColor" class="h-8 w-8" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1664 1344v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45zm0-512v128q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h1408q26 0 45 19t19 45z">
                             </path>

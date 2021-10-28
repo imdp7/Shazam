@@ -1,19 +1,20 @@
 import React from 'react'
 
 function Content() {
+
 	return (
-		
-<div class="bg-white">
-    <div class="text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
+	<div>
+<div class="overflow-hidden relative h-screen bg-blue-900">
+    <div class="text-start w-3/2 py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
         <h2 class="text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
-            <span class="block">
-                Want to be millionaire ?
+            <span>
+                Listen is Everything
             </span>
             <span class="block text-indigo-500">
                 It&#x27;s today or never.
             </span>
         </h2>
-        <p class="text-xl mt-4 max-w-md mx-auto text-gray-400">
+        <p class="text-xl mt-4 text-gray-400 flex-wrap">
             I had noticed that both in the very poor and very rich extremes of society the mad were often allowed to mingle freely
         </p>
         <div class="lg:mt-0 lg:flex-shrink-0">
@@ -25,6 +26,7 @@ function Content() {
         </div>
     </div>
 </div>
+</div>	
 
 	)
 }

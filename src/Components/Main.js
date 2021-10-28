@@ -1,11 +1,13 @@
 import React from 'react'
-import Content from '../Components/Content'
+import Content from './Content'
+import Section from './Section'
 
 
 function Main() {
 	return (
-		<div>
+		<div class="p-2 flex-wrap">
 			<Content/>
+			<Section/>
 		</div>
 	)
 }
