@@ -78,7 +78,7 @@ function Song({match}) {
 					<div class="p-3 col-span-1">
 					<p class='text-black font-bold text-3xl p-2'>Lyrics</p>
 					<span class="text-xl font-base text-black whitespace-pre-line">
-						{song?.sections[1]?.text}
+						{/* {song?.sections[1]?.text} */}
 					</span>
 					</div>
 					</div>
