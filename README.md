@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 # Demo : https://imdp7.z22.web.core.windows.net
 # Created Spotify App with create react app
+=======
+## Demo : https://imdp7.z22.web.core.windows.net
+## Created Spotify App with create react app
+>>>>>>> 353d3789efd519ebfb2ef4da90cbfb01798b9d9f
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ## Using Z Layout HomePage and F Layout for content pages
 
