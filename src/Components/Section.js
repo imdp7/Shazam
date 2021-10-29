@@ -2,7 +2,7 @@ import React from 'react'
 import Card from './Card' 
 function Section() {
 	return (
-	<div class="p-2 ">
+	<div class="p-10 ">
 	<h2 class="flex justify-center rounded-lg items-center bg-indigo-600 text-white text-4xl shadow-lg font-mono font-black p-3">
 		Plans
 	</h2>
