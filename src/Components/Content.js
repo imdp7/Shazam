@@ -4,7 +4,7 @@ function Content() {
 
 	return (
 	<div>
-<div class="overflow-hidden relative h-screen bg-blue-900">
+<div class="overflow-hidden relative h-screen bg-blue-900 bg-opacity-100">
     <div class="text-start w-3/2 py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
         <h2 class="text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
             <span>
