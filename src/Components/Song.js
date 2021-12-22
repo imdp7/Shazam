@@ -3,6 +3,9 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 import ReactPlayer from "react-player"
 import Avatar from '../assets/avatar.png'
+import NumberFormat from 'react-number-format';
+import { BiShare,BiMusic } from 'react-icons/bi';
+import 'boxicons';
 
 function Song({match}) {
 
@@ -15,8 +18,24 @@ function Song({match}) {
 		  'x-rapidapi-key': '8be226908emsh037a6844bf11d3ap1be370jsn96a5781429d1'
 		}
 	      };
+
+    var options2 = {
+  method: 'GET',
+  url: 'https://shazam.p.rapidapi.com/songs/get-count',
+  params: {key: `${match.params?.key}`, locale: 'en-US'},
+  headers: {
+    'x-rapidapi-host': 'shazam.p.rapidapi.com',
+    'x-rapidapi-key': 'a58e8b547bmshc997baefe2bfbb9p18bfc7jsn1e90b70d7c29'
+  }
+};
+
+const numberFormat = (value) =>
+  new Intl.NumberFormat('en-IN', {
+  }).format(value);
 	
 	const [song,setSong] = useState([]);
+    const [count,setCount] = useState([]);
+    const [lyrics,setLyrics] = useState([]);
 	
 
 	useEffect(() => {
@@ -34,43 +53,98 @@ function Song({match}) {
 		},[match])
 
 
+	useEffect(() => {
+		if (match) {
+		    
+		      axios.request(options2)
+		      .then((res) => {
+			let c = res.data;
+			setCount(c);
+			})
+		      .catch((error) => {
+			console.error("Error", error.message);
+		      });
+		}
+		},[match])
+
+        let Values =[];
+
+//   useEffect(() => {
+//    let data = song?.sections[1]?.text;
+//    console.log(data)
+
+//    for (var key in data['text']) {
+//      Values.push(key);
+//     }
+//     setLyrics(Values)
+//     console.log(lyrics)
+//   }, []);
+
+
 	return (
 		<div>
 
-		<div class="pt-3 pb-5 bg-indigo-300">
+		<div class=" pb-5 bg-black">
 		
 				
 				<div class="flex flex-row">
-					<div class="w-1/3 mt-16">
-					<img class="object-cover absolute left-10 rounded-3xl shadow-lg transition hover:duration-300 ease-in-out" src={song?.images?.coverarthq} height='250px' width='250px' alt={song.key}/>
+					<div class="w-1/3 mt-24">
+					<img class="object-cover absolute left-10 rounded-lg shadow-lg transition hover:duration-300 ease-in-out" src={song?.images?.coverarthq} height='250px' width='250px' alt={song.key}/>
 					</div>
 					
-				<div class="w-2/3 flex flex-col -ml-24 mt-4">					
-					<span class=" text-3xl font-extrabold ">{song?.title}</span>
-					<span class=" text-xl font-bold ">{song?.subtitle}</span>
-					<span class="p-2 justify-between text-lg font-semi ">{song?.genres?.primary}</span>
-					<div class="inline-flex rounded-md">
+				<div class="flex flex-col -ml-36 mt-16 p-2">					
+					<span class="p-2 text-3xl font-extrabold text-white">{song?.title}</span>
+					<span class="p-2 text-xl font-bold text-white">{song?.subtitle}</span>
+                    <div class="flex flex-row">
+					<span class="p-2 justify-between text-lg font-semi text-white text-opacity-75">{song?.genres?.primary}</span>
+					<span class="p-2 justify-between text-base font-semi text-white text-opacity-75">{numberFormat(count.total)} Shazams</span>
+                    </div>
+					{/* <div class="inline-flex rounded-md">
 					<Link to={{ pathname:song?.hub?.options[0]?.actions[0]?.uri}} target="_blank">
                 			<button type="button" class="py-4 px-6 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                            <box-icon type="logo" name="BiMusic"></box-icon>
                     			Play on Itunes
                 			</button>
 					</Link>
+            				</div> */}
+					
+			</div>		
+		</div>
+		</div>
+        <div class="w-2/3 flex flex-row ml-72 pl-24 mt-4">
+        <div class="flex flex-col w-auto rounded-md pr-3">
+					<Link to={{ pathname:song?.hub?.options[0]?.actions[0]?.uri}} target="_blank">
+                			<button type="button" class="py-4 px-6 bg-red-600 hover:bg-black
+                            hover:text-white focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base w-full font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full ">
+                                Play on Itunes
+                			</button>
+					</Link>
+                    <div class="mt-3 w-full">
+            <p class="text-xs font-bold">
+            Get up to 5 months free of Apple Music
+            </p>
+        </div>
             				</div>
-			</div>
-					
-		</div>
-		</div>
-					{/* src={song?.sections[2]?.youtubeurl?.actions[0]?.uri} */}
-					
-					<div class="w-full mt-36 h-full grid grid-cols-3">
+        
+                <div class="flex flex-col w-36 rounded-md -pr-3">
+					<Link to={{ pathname:song?.hub?.options[0]?.actions[0]?.uri}} target="_blank">
+                			<button type="button" class="py-4 px-6 bg-black hover:bg-white
+                            hover:text-black focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full ">
+                                Share
+                			</button>
+					</Link>
+            				</div>
+                            </div>
+
+					<div class="w-full mt-2 h-full grid grid-cols-3 p-10">
 					
 					<div class="p-2 col-span-2 row-span-2">
 
-					<p class='text-black font-bold text-3xl p-2'>Music Video</p>
+					<p class='text-black font-bold text-3xl p-2 mb-5'>Music Video</p>
 
 					<ReactPlayer
         				url={song?.sections && song?.sections[2]?.youtubeurl?.actions[0]?.uri}
-					controls='true'
+					controls='false'
 					width='90%'
 					height='70vh'
       					/>
@@ -187,7 +261,7 @@ function Song({match}) {
 					</div>
 				
 					<div class="p-2 col-span-1">
-					<p class='text-black font-bold text-3xl p-2'>Lyrics</p>
+					<p class='text-black font-bold text-3xl p-2 mb-5'>Lyrics</p>
 					
 					<div class="whitespace-pre-line">
 					<span class='text-xl font-base text-black text-opacity-75 flex-wrap'>

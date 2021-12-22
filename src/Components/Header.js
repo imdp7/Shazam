@@ -9,7 +9,7 @@ function Header() {
 	return (
 		
 <div>
-    <nav class="bg-black  shadow ">
+    <nav class="bg-black  shadow">
         <div class="max-w-7xl mx-auto px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="w-full justify-between flex items-center">
