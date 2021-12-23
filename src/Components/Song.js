@@ -3,7 +3,6 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 import ReactPlayer from "react-player"
 import Avatar from '../assets/avatar.png'
-import NumberFormat from 'react-number-format';
 import { BiShare,BiMusic } from 'react-icons/bi';
 import 'boxicons';
 
@@ -70,7 +69,7 @@ const numberFormat = (value) =>
         let Values =[];
 
 //   useEffect(() => {
-//    let data = song?.sections[1]?.text;
+//    const data = song?.sections[1]?.text;
 //    console.log(data)
 
 //    for (var key in data['text']) {
@@ -84,7 +83,7 @@ const numberFormat = (value) =>
 	return (
 		<div>
 
-		<div class=" pb-5 bg-black">
+		<div class=" pb-2 bg-black">
 		
 				
 				<div class="flex flex-row">
@@ -97,6 +96,7 @@ const numberFormat = (value) =>
 					<span class="p-2 text-xl font-bold text-white">{song?.subtitle}</span>
                     <div class="flex flex-row">
 					<span class="p-2 justify-between text-lg font-semi text-white text-opacity-75">{song?.genres?.primary}</span>
+                    <div class="icons8-shazam"></div>
 					<span class="p-2 justify-between text-base font-semi text-white text-opacity-75">{numberFormat(count.total)} Shazams</span>
                     </div>
 					{/* <div class="inline-flex rounded-md">
@@ -114,10 +114,14 @@ const numberFormat = (value) =>
         <div class="w-2/3 flex flex-row ml-72 pl-24 mt-4">
         <div class="flex flex-col w-auto rounded-md pr-3">
 					<Link to={{ pathname:song?.hub?.options[0]?.actions[0]?.uri}} target="_blank">
-                			<button type="button" class="py-4 px-6 bg-red-600 hover:bg-black
+                    <div class="flex flex-row items-center">
+                        
+                			<button type="button" class="py-4 px-6 flex justify-around items-center bg-red-600 hover:bg-black
                             hover:text-white focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base w-full font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full ">
-                                Play on Itunes
+                               <BiMusic style={{fontSize:'25px'}}/> 
+                               <span>Play on Itunes</span>
                 			</button>
+                    </div>
 					</Link>
                     <div class="mt-3 w-full">
             <p class="text-xs font-bold">
@@ -128,9 +132,11 @@ const numberFormat = (value) =>
         
                 <div class="flex flex-col w-36 rounded-md -pr-3">
 					<Link to={{ pathname:song?.hub?.options[0]?.actions[0]?.uri}} target="_blank">
-                			<button type="button" class="py-4 px-6 bg-black hover:bg-white
+                        
+                			<button type="button" class="py-4 px-6 flex justify-around bg-black hover:bg-white
                             hover:text-black focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full ">
-                                Share
+                                <BiShare style={{fontSize:'25px'}}/> 
+                               <span> Share</span>
                 			</button>
 					</Link>
             				</div>
